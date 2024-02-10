@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Validation Form</title>
+	<style>
+		body {
+			background-image: url("/images/craftSilicon.jpg");
+			height: 100%;
+			background-position: center;
+		}
+
+		.common {
+			width: 300px;
+			height: 30px;
+			border-radius: 10px;
+			margin-bottom: 10px;
+		}
+
+		.para {
+			font-weight: bold;
+		}
+
+		.some {
+			padding: 10px;
+			background-color: darkblue;
+			color: white;
+			border-radius: 10px;
+			margin-bottom: 40px;
+		}
+
+		img {
+			width: 100px;
+			height: 100px;
+		}
+
+		select {
+			border: 2px solid #1b1717;
+
+		}
+
+
+		input::placeholder,
+		select {
+			font-weight: bolder;
+			color: black;
+		}
+
+		/* The switch - the box around the slider */
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
+
+		/* Hide default HTML checkbox */
+		.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		/* The slider */
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		input:checked+.slider {
+			background-color: #2196F3;
+		}
+
+		input:focus+.slider {
+			box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked+.slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+			border-radius: 34px;
+		}
+
+		.slider.round:before {
+			border-radius: 50%;
+		}
+
+		.card {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 400px;
+			max-width: 500px;
+			min-height: 500px;
+			max-height: 100%;
+			margin-left: 400px;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			background-color: #fff;
+			text-align: center;
+			overflow: hidden;
+			background: transparent;
+		}
+
+		.para {
+			font-size: large;
+			font-weight: bold;
+			color: rgb(255, 255, 255);
+		}
+	</style>
+</head>
+
+<body class="container">
+	<div class="card">
+	<div>
+		<img src="/images/download.png" />
+		<p class="para">Welcome back, Please give correct details</p>
+		<form action="/validation" method="post" enctype="multipart/form-data">
+			<input class="common" type="text" placeholder="Username" id="username">
+			<p id="nameError"></p>
+			<br>
+			<select class="common" id="ValidID" name="validid">
+				<option value="">Select ID Name</option>
+				<option value="aadhar">Aadhar Card</option>
+				<option value="pan">Pan Card</option>
+				<option value="voter">Voter ID</option>
+				<option value="dl">Driving Licence</option>
+			</select>
+			<p id="IDError"></p>
+			<br>
+			<input class="common" type="text" placeholder="ID Number" name="idnum" id="number" required>
+			<p id="IdentityError"></p>
+			<br>
+			<input class="common" type="file" placeholder="Upload ID" id="file" name="image" accept=".pdf, .jpg, .png"
+				required style="color: white;">
+			<p id="fileError"></p>
+			<br>
+			<p style="color: red;font-weight:bold;font-size: 35px;" th:text="${message}"></p>
+			<br />
+			<input class="some" type="submit" value="Check ID">
+		</form>
+		</div>
+	</div>
+</body>
+
+</html>
